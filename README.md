@@ -8,9 +8,9 @@ using Vue 3, firebase auth, and vite.
 
 Features that Im planning on:  
 Login with Email & Password  
-Google Authentication  
+Google, github Authentication  
 Password Recovery  
 Firebase Authentication Integration  
-Environment Variables for Security  
+Env Variables for Security  
 Unit Tests with Vitest  
 
