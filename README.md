@@ -1,5 +1,16 @@
-# Vue 3 + Vite
+# Simple web app with a full login screen
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+this is my personal studies on web dev.  
+the project involves a login screen  
+with password recovery, google auth.  
+using Vue 3, firebase auth, and vite.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+
+Features that Im planning on:  
+Login with Email & Password  
+Google Authentication  
+Password Recovery  
+Firebase Authentication Integration  
+Environment Variables for Security  
+Unit Tests with Vitest  
+
