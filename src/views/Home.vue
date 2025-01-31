@@ -17,7 +17,7 @@ export default {
       try {
         await signOut(auth);
         alert("Logged out successfully.");
-        router.push('/login');
+        router.push('/');
       } catch (error) {
         alert(error.message);
       }

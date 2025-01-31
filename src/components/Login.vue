@@ -21,6 +21,7 @@
 import { ref } from "vue";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
+import { useRouter } from "vue-router";
 
 
 export default {
@@ -28,10 +29,12 @@ export default {
     const email = ref("");
     const password = ref("");
 
+    const router = useRouter();
     const login = async () => {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
         alert("loggeg in successfully ***");
+        router.push('/home');
       } catch (error) {
         alert(error.message);
       }
@@ -42,6 +45,8 @@ export default {
         const provider = new GoogleAuthProvider();
         await signInWithPopup(auth, provider);
         alert("logged in with google ***");
+        router.push('/home');
+
       } catch (error) {
         alert(error.message);
       }
@@ -53,6 +58,8 @@ export default {
         const provider = new GithubAuthProvider();
         await signInWithPopup(auth, provider);
         alert("Logge in with Github ***");
+        router.push('/home');
+
       } catch (error) {
         alert(error.message);
       }
@@ -63,6 +70,7 @@ export default {
       try {
         await sendPasswordResetEmail(auth, email.value);
         alert("Password reset email sent.");
+        
       } catch (error) {
         alert(error.message);
       }
@@ -102,7 +110,7 @@ input {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #e0dfdf;
+  background-color: #6b6b6b;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -151,13 +159,13 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #6e6e6e;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #979797;
   }
 }
 

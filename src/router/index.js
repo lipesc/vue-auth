@@ -4,8 +4,8 @@ import Home from "../views/Home.vue";
 import { auth } from "../firebase";
 
 const routes = [
-  { path: "/", component: Home, meta: { requiresAuth: true } },
-  { path: "/auth", component: Auth },
+  { path: "/", component: Auth },
+  { path: "/home", component: Home, meta: { requiresAuth: true } },
 
 ];
 
