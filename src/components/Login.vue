@@ -19,7 +19,7 @@
 
 <script>
 import { ref } from "vue";
-import { store } from "./firebase";
+import { store } from "../firebase";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GitHubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 
 
