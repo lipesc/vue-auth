@@ -1,17 +1,16 @@
 <script setup>
-import HelloWorld from './components/Login.vue'
+import Login from './components/Login.vue'
+import Home from './views/Home.vue'
 </script>
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
+    <a href="hhttps://github.com/lipesc" target="_blank">
+      <img src="./assets/gitlogo.png" class="logo" alt="profilepic" />
     </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+ 
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Home msg="lipesc" />
 </template>
 
 <style scoped>
