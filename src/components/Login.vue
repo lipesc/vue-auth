@@ -10,7 +10,7 @@
     </form>
 
     <button @click="loginWithGoole"> Login with google</button>
-    <button @click="loginWithGitHub"> Login with github</button>
+    <button @click="loginWithGithub"> Login with github</button>
     <p><a @click="resetPassword">Reset password</a> </p>
 
   </div>
@@ -20,7 +20,7 @@
 <script>
 import { ref } from "vue";
 import { store } from "../firebase";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GitHubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 
 
 export default {
@@ -48,9 +48,9 @@ export default {
     
     }
 
-    const loginWithGitHub = async () => {
+    const loginWithGithub = async () => {
       try {
-        const provider = new GitHubAuthProvider();
+        const provider = new GithubAuthProvider();
         await signInWithPopup(auth, provider);
         alert("Logge in with Github ***");
       } catch (error) {
@@ -68,7 +68,7 @@ export default {
       }
     };
 
-    return { email, password, login, loginWithGoole, loginWithGitHub, resetPassword };
+    return { email, password, login, loginWithGoole, loginWithGithub, resetPassword };
     },
   };
 </script>
