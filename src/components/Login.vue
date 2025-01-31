@@ -10,7 +10,7 @@
     </form>
 
     <button @click="loginWithGoole"> Login with google</button>
-    <button @click="loginWithGithub"> Login with github</button>
+    <button @click="loginWithGitHub"> Login with github</button>
     <p><a @click="resetPassword">Reset password</a> </p>
 
   </div>
@@ -48,7 +48,7 @@ export default {
     
     }
 
-    const loginWithGithub = async () => {
+    const loginWithGitHub = async () => {
       try {
         const provider = new GitHubAuthProvider();
         await signInWithPopup(auth, provider);
@@ -68,7 +68,27 @@ export default {
       }
     };
 
-    return { email, password, login, loginWithGoole, loginWithGithub, resetPassword };
+    return { email, password, login, loginWithGoole, loginWithGitHub, resetPassword };
     },
   };
 </script>
+
+<style scoped>
+.login-container {
+  max-width: 450px;
+  margin: auto;
+  text-align: center;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 13px 0;
+  padding: 10px
+}
+
+button {
+  padding: auto;
+  margin-top: 10px;
+}
+</style>
