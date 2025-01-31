@@ -9,21 +9,25 @@
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
+import { useToast } from "vue-toastification";
 
 export default {
   setup() {
     const router = useRouter();
     const logout = async () => {
       try {
+        const toast = useToast();
         await signOut(auth);
-        alert("Logged out successfully.");
+        toast("Logged out successfully.");
         router.push('/');
       } catch (error) {
         alert(error.message);
       }
 
     };
+   
 
+    
     return { logout };
   },
 };

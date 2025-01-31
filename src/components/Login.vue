@@ -22,6 +22,7 @@ import { ref } from "vue";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import { useRouter } from "vue-router";
+import { useToast } from "vue-toastification";
 
 
 export default {
@@ -29,14 +30,17 @@ export default {
     const email = ref("");
     const password = ref("");
 
+    const toast = useToast();
+
     const router = useRouter();
     const login = async () => {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
-        alert("loggeg in successfully ***");
+        toast.success("success logged ***", {
+        timeout: 2000});
         router.push('/home');
       } catch (error) {
-        alert(error.message);
+        toast(error.message);
       }
     };
 
@@ -44,11 +48,13 @@ export default {
       try {
         const provider = new GoogleAuthProvider();
         await signInWithPopup(auth, provider);
-        alert("logged in with google ***");
+        toast.success("logged in with google ***", {
+        timeout: 2000});
         router.push('/home');
+    
 
       } catch (error) {
-        alert(error.message);
+        toast(error.message);
       }
     
     }
@@ -57,22 +63,24 @@ export default {
       try {
         const provider = new GithubAuthProvider();
         await signInWithPopup(auth, provider);
-        alert("Logge in with Github ***");
+        toast.success("logged in with loginWithGithub ***", {
+        timeout: 2000});
         router.push('/home');
+      
 
       } catch (error) {
-        alert(error.message);
+        toast(error.message);
       }
     }
 
     const resetPassword = async () => {
-      if (!email.value) return alert("Enter your email first.");    
+      if (!email.value) return toast("Enter your email first.");    
       try {
         await sendPasswordResetEmail(auth, email.value);
-        alert("Password reset email sent.");
+        toast("Password reset email sent.");
         
       } catch (error) {
-        alert(error.message);
+        toast(error.message);
       }
     };
 
