@@ -1,6 +1,18 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import Login from './components/Login.vue'
 import Home from './views/Home.vue'
+
+const isAuth = ref(false);
+const router = useRouter();
+
+const checkAuth = () => {
+  if (!isAuth.value) {
+    router.push('/login');
+  }
+}
+
 </script>
 
 <template>
@@ -8,9 +20,9 @@ import Home from './views/Home.vue'
     <a href="hhttps://github.com/lipesc" target="_blank">
       <img src="./assets/gitlogo.png" class="logo" alt="profilepic" />
     </a>
- 
+    <router-view @check-auth="checkAuth"></router-view>
   </div>
-  <Home msg="lipesc" />
+  
 </template>
 
 <style scoped>
