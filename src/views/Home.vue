@@ -8,13 +8,16 @@
 <script>
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
+    const router = useRouter();
     const logout = async () => {
       try {
         await signOut(auth);
         alert("Logged out successfully.");
+        router.push('/login');
       } catch (error) {
         alert(error.message);
       }
