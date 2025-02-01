@@ -1,7 +1,7 @@
 <template>
   <div class="auth-page">
   <h1>Authentication</h1>
-  <Login />
+  <Login/>
   </div>
 </template>
 
