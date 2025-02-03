@@ -1,13 +1,16 @@
 <template>
   <div class="home-page">
-    <h1>lipesc project: vue3 loging</h1>
+    <h3>lipesc project: vue3</h3>
+    <p>Testes login </p>
+    <p> com firebase</p>
+   
     <button @click="logout">logout</button>
   </div>
 </template>
 
 <script>
 import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth"; // ✅ Corrigido
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 
@@ -15,23 +18,29 @@ export default {
   setup() {
     const router = useRouter();
     const toast = useToast();
+
+    // Verifica se o usuário está autenticado antes de renderizar a página
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        router.push("/");
+      }
+    });
+
     const logout = async () => {
       try {
         await signOut(auth);
         toast("Logged out successfully.");
-        router.push('/');
+        router.push("/");
       } catch (error) {
-        alert(error.message);
+        console.error("Erro ao fazer logout:", error.message);
       }
-
     };
-   
 
-    
     return { logout };
   },
 };
 </script>
+
 
 <style scoped>
 .home-page {
