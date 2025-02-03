@@ -118,7 +118,7 @@ input {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #ffffff;
+  background-color: #111;
   cursor: pointer;
   transition: border-color 0.25s;
 }
