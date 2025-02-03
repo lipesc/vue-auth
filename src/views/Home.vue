@@ -14,9 +14,9 @@ import { useToast } from "vue-toastification";
 export default {
   setup() {
     const router = useRouter();
+    const toast = useToast();
     const logout = async () => {
       try {
-        const toast = useToast();
         await signOut(auth);
         toast("Logged out successfully.");
         router.push('/');

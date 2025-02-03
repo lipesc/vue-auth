@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Auth from './views/Auth.vue'
-import Home from './views/Home.vue'
 
 const isAuth = ref(false);
 const router = useRouter();
