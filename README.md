@@ -13,6 +13,10 @@ Firebase Authentication Integration
 Env Variables for Security  
 Unit Tests with Vitest  
 
+## Backend Integration
+
+📚 **[Spring Boot/Java Integration Guide](SPRING_INTEGRATION.md)** - Learn how to integrate this Vue.js authentication with a Spring Java backend
+
 Domain on heroku:
 https://vue3-heroku-app-3e0438eb2396.herokuapp.com/
 
