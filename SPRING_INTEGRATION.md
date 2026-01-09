@@ -2,6 +2,8 @@
 
 Este documento explica como integrar esta aplicação Vue.js com autenticação Firebase com um backend Spring Java.
 
+> **Nota sobre Versões**: Este guia usa imports Jakarta EE (`jakarta.servlet.*`, `jakarta.persistence.*`) que são compatíveis com **Spring Boot 3.x e posteriores**. Se você estiver usando **Spring Boot 2.x**, substitua os imports `jakarta.*` por `javax.*` (ex: `javax.servlet.*`, `javax.persistence.*`).
+
 ## Visão Geral da Arquitetura
 
 A aplicação Vue.js atual usa Firebase Authentication para gerenciar usuários. Para integrar com um backend Spring:
@@ -172,7 +174,8 @@ public class FirebaseConfig {
     public void initialize() throws IOException {
         // Baixe o arquivo de credenciais do Firebase Console:
         // Project Settings > Service Accounts > Generate New Private Key
-        FileInputStream serviceAccount = new FileInputStream("path/to/serviceAccountKey.json");
+        // Configure o caminho via application.properties: firebase.credentials.path
+        FileInputStream serviceAccount = new FileInputStream("${firebase.credentials.path}");
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -203,10 +206,10 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -324,7 +327,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -416,7 +419,7 @@ InputStream serviceAccount = new ByteArrayInputStream(credentialsJson.getBytes()
 ```java
 package com.example.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
